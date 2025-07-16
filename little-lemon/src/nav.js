@@ -1,18 +1,18 @@
-
+import './style.css';
 
 function Nav(){
     return(
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href ="#about">About</a></li>
-            <li><a href ="#Menu">Menu</a></li>
-            <li><a href ="#Reservation">Reservation</a></li>
-            <li><a href ="#Order online">Order online</a></li>
-            <li><a href ="#Login">Login</a></li>
-        </ul>
-    </nav>
-        )
+        <nav>
+            <ul className="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href ="#about">About</a></li>
+                <li><a href ="#Menu">Menu</a></li>
+                <li><a href ="#Reservation">Reservation</a></li>
+                <li><a href ="#Order online">Order online</a></li>
+                <li><a href ="#Login">Login</a></li>
+            </ul>
+        </nav>
+    )
 }
 
 export default Nav;

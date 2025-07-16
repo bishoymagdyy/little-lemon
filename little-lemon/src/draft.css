@@ -1,0 +1,109 @@
+/* general styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: inline-flex;          /* Enables Flexbox */
+    align-items: center;    /* Vertically centers items */
+    padding: 1rem 2rem;     /* Adds spacing around */
+    background: white;      /* Optional: background color */
+}
+
+/* Logo container */
+.logo {
+    flex-shrink: 0; /* Prevents image from shrinking */
+    margin-right: 30px; /* Space between logo and nav */
+}
+
+/* Logo image */
+.logo img {
+    width: 120px; /* Set your desired width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensures responsiveness */
+    flex-direction: row;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    transition: color 0.3s;
+}
+
+
+.nav-links a {
+    list-style: none;
+    text-decoration: none;  /* Removes underline */
+    color: #0b0b07;            /* Link color */
+    font-weight: 500;       /* Optional: bold text */
+}
+
+.nac-links:hover {
+    color: #f4ce14;
+}
+
+
+
+/* nav styles*/
+/* main styles
+
+
+
+
+function Footer() {
+    return (
+        <footer className="footer">
+            <div className="footer-logo">
+                <img src={footer} alt="logo"  />
+            </div>
+            <div className="footer-nav">
+                { Doormat Navigation }
+                <div className="footer-section">
+                    <h3>Doormat Navigation</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/menu">Menu</a></li>
+                        <li><a href="/reservations">Reservations</a></li>
+                        <li><a href="/order">Order Online</a></li>
+                        <li><a href="/login">Login</a></li>
+                    </ul>
+                </div>
+                {Contact Information }
+                <div className="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>123 Lemon Street, Chicago</li>
+                        <li>(312) 555-1234</li>
+                        <li>contact@littlelemon.com</li>
+                    </ul>
+                </div>
+                {Social Media Links }
+                <div className="footer-section">
+                    <h3>Social Media</h3>
+                    <div>
+                        <a href="https://facebook.com" aria-label="Facebook">
+                            <i className="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" aria-label="Instagram">
+                            <i className="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" aria-label="Twitter">
+                            <i className="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+}
+
+export default Footer;
+
+*/
