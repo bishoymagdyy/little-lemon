@@ -10,16 +10,17 @@ function About(){
             <div className="about-text">
                 <h2>Little lemon</h2>
                 <h3>Chicago</h3>
-                <p>Founded in 2015 by brothers Mario and Adrian...</p>
+                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. </p>
             </div>
             <div className="about-images">
                 <img
-                    src={restaurant2}
+                    src={restaurant}
                     alt="Restaurant owners"
                     className="about-img-main"
                 />
                 <img
-                    src={restaurant}
+                    src={restaurant2}
                     alt="Restaurant interior"
                     className="about-img-secondary"
                 />

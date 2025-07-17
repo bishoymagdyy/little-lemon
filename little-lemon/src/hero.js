@@ -9,7 +9,7 @@ function Hero(){
             <div className="hero-text">
                 <h2>Little Lemon</h2>
                 <h3>Chicago</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p className="par">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <button className="btn">Reserve a Table</button>
             </div>
             <div className="hero-image">

@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css'; // Create this file for styling
 import footer from './photo/footer.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
     return (
@@ -31,13 +33,13 @@ function Footer() {
                 <h4>Social Media</h4>
                 <div className="footer-icon">
                     <a href="https://facebook.com" aria-label="Facebook">
-                        <i className="fab fa-facebook"></i>
+                        <FontAwesomeIcon icon={faFacebook} />
                     </a>
                     <a href="https://instagram.com" aria-label="Instagram">
-                        <i className="fab fa-instagram"></i>
+                        <FontAwesomeIcon icon={faInstagram} />
                     </a>
                     <a href="https://twitter.com" aria-label="Twitter">
-                        <i className="fab fa-twitter"></i>
+                        <FontAwesomeIcon icon={faTwitter} />
                     </a>
                 </div>
             </div>

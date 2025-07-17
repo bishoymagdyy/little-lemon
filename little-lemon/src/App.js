@@ -7,6 +7,9 @@ import About from './about';
 import Footer from './footer';
 import './App.css';
 import './style.css'
+import '@fontsource/markazi-text/400.css'; // Regular weight
+import '@fontsource/markazi-text/700.css'; // Bold weight
+import '@fontsource/karla'
 
 function App() {
   return (
@@ -15,7 +18,7 @@ function App() {
         <Header />
         <Nav />
       </header>
-      <main>
+      <main className='main'>
         <Hero />
         <Specials />
         <Testimonials />

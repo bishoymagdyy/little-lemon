@@ -50,8 +50,122 @@
 
 
 
-/* nav styles*/
-/* main styles
+/* nav styles
+
+
+.hero {
+    background-color: #495E57;
+    color: white;
+    padding: 1.5rem 1rem;
+    padding-bottom: 0.2px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30vh;
+    margin-top: 10px;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 20px;
+    margin-left: 250px;
+    font-family: 'markazi taxi', sans-serif;
+}
+
+.hero-text h2 {
+    font-size: 50pt;
+    color: #F4CE14;
+}
+
+.hero-text h3 {
+    font-size: 36pt;
+    margin-bottom: 1rem;
+    margin-top: -25px;
+    margin-right: 200px;
+}
+
+.hero-text p {
+    max-width: 300px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    font-size: 16pt;
+    text-align: center;
+}
+
+
+ main styles
+
+
+function Specials(){
+    return(
+        <div className="specials-grid">
+            <div className="section-header">
+                <h2>This week's specials</h2>
+                <button className="btn">Online menu</button>
+            </div>
+            <div className="card">
+                <img
+                    src={greekSalad}
+                    alt="Greek salad"
+                    className="card-image"
+                />
+                <div className="card-content">
+                    <div className="card-header">
+                        <h3>Greek salad</h3>
+                        <p className="price">$12.00</p>
+                    </div>
+                    <p>The famous Greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.</p>
+                    <button className="order-btn">Order a delivery  <FaMotorcycle className="icon"/></button>
+                </div>
+            </div>
+            <div className="card">
+                <img
+                    src={bruchetta}
+                    alt="bruchetta"
+                    className="card-image"
+                />
+                <div className="card-content">
+                    <div className="card-header">
+                        <h3>Bruchetta</h3>
+                        <p className="price">$5.99</p>
+                    </div>
+                    <p>Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.</p>
+                    <button className="order-btn">Order a delivery  <FaMotorcycle className="icon"/></button>
+                </div>
+            </div>
+            <div className="card">
+                <img
+                    src={lemonDessert}
+                    alt="lemon dessert"
+                    className="card-image"
+                />
+                <div className="card-content">
+                    <div className="card-header">
+                        <h3>Lemon dessert</h3>
+                        <p className="price">$5.00</p>
+                    </div>
+                    <p>This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.</p>
+                    <button className="order-btn">Order a delivery  <FaMotorcycle className="icon"/></button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
+export default Specials;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
