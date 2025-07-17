@@ -1,6 +1,6 @@
 import './style.css';
 import React from 'react';
-import logo from './photo/logo.jpg'; // Relative import from src
+import logo from './photo/logo.jpg';
 
 function Header(){
     return(
