@@ -1,6 +1,6 @@
 
-import restaurant from "./photo/restaurant.jpg"
-import restaurant2 from "./photo/restaurant2.jpg"
+import restaurant from "../photo/restaurant.jpg"
+import restaurant2 from "../photo/restaurant2.jpg"
 
 
 

@@ -1,7 +1,7 @@
 
-import greekSalad from "./photo/greekSalad.jpg"
-import bruchetta from "./photo/bruchetta.jpg"
-import lemonDessert from "./photo/lemonDessert.jpg"
+import greekSalad from "../photo/greekSalad.jpg"
+import bruchetta from "../photo/bruchetta.jpg"
+import lemonDessert from "../photo/lemonDessert.jpg"
 import { FaMotorcycle } from 'react-icons/fa'; // Delivery bike icon
 
 

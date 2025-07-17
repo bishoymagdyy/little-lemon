@@ -1,7 +1,7 @@
 
-import alex from "./photo/alex.jpg"
-import sarah from "./photo/sarah.jpeg"
-import john from "./photo/john.jpg"
+import alex from "../photo/alex.jpg"
+import sarah from "../photo/sarah.jpeg"
+import john from "../photo/john.jpg"
 
 
 

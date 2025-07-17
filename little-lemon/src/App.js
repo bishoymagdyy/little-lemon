@@ -1,10 +1,8 @@
-import Header from './header';
-import Nav from './nav';
-import Hero from './hero';
-import Specials from './specials';
-import Testimonials from './testimonials';
-import About from './about';
-import Footer from './footer';
+import Header from './components/header';
+import Nav from './components/nav';
+import About from './components/about';
+import Footer from './components/footer';
+import Home from './home';
 import './App.css';
 import './style.css'
 import '@fontsource/markazi-text/400.css'; // Regular weight
@@ -25,14 +23,8 @@ function App() {
       {/* Main content that changes per route */}
       <main className="main">
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Specials />
-              <Testimonials />
-              <About />
-            </>
-          } />
+          <Route path="/" element={<Home/>} />
+          <Route path="/component/about" element={<About/>} />
         </Routes>
       </main>
 

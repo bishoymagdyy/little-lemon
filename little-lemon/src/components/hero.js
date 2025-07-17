@@ -1,5 +1,5 @@
 
-import restauranfood from "./photo/restauranfood.jpg"
+import restauranfood from "../photo/restauranfood.jpg"
 
 
 

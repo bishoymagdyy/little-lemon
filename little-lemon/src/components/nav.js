@@ -1,4 +1,4 @@
-import './style.css';
+import '../style.css';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ function Nav(){
     return(
         <nav>
             <ul className="nav-links">
-                <li><Link to="/hero">Home</Link></li>
+                <li><Link to="../home">Home</Link></li>
                 <li><Link to ="/about">About</Link></li>
                 <li><Link to="/specials">Menu</Link></li>
                 <li><Link to="/Reservation">Reservation</Link></li>
