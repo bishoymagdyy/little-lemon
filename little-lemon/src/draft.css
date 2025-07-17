@@ -759,3 +759,70 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+            <button
+                className='hamburger'
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label='toggle menu'
+            >
+                <FaBars />
+            </button>
+            <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+                <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/menu">Menu</Link></li>
+                    <li><Link to="/reservations">Reservations</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                </ul>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                .hamburger {
+        display: block;
+    }
+
+  /* Mobile menu styling */
+    .mobile-menu {
+        position: fixed;
+        top: 80px; /* Adjust based on your navbar height */
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+        transform: translateY(0);
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+
+
+

@@ -9,6 +9,7 @@ import '@fontsource/markazi-text/400.css'; // Regular weight
 import '@fontsource/markazi-text/700.css'; // Bold weight
 import '@fontsource/karla'
 import { Routes, Route } from 'react-router-dom';
+import Specials from './components/specials';
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/component/about" element={<About/>} />
+          <Route path="/components/specials" element={<Specials />} />
+          <Route path="/components/about" element={<About/>} />
         </Routes>
       </main>
 

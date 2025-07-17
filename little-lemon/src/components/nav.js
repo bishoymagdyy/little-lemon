@@ -1,36 +1,77 @@
 import '../style.css';
 import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+
 
 function Nav(){
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
     return(
         <nav>
             <ul className="nav-links">
-                <li><Link to="../home">Home</Link></li>
-                <li><Link to ="/about">About</Link></li>
-                <li><Link to="/specials">Menu</Link></li>
-                <li><Link to="/Reservation">Reservation</Link></li>
-                <li><Link to="/Order online">Order online</Link></li>
-                <li><Link to="/Login">Login</Link></li>
+                <li><NavLink to="/" end   className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></li>
+                <li><NavLink to ="/components/about"   className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink></li>
+                <li><NavLink to="/components/specials"   className={({ isActive }) => isActive ? 'active' : ''}>Menu</NavLink></li>
+                <li><NavLink to="/components/booking"   className={({ isActive }) => isActive ? 'active' : ''}>Reservation</NavLink></li>
+                <li><NavLink to="/components/Order online"   className={({ isActive }) => isActive ? 'active' : ''}>Order online</NavLink></li>
+                <li><NavLink to="/components/Login"   className={({ isActive }) => isActive ? 'active' : ''}>Login</NavLink></li>
             </ul>
+            {/* Mobile Hamburger Icon */}
             <button
-                className='hamburger'
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label='toggle menu'
+                className="hamburger-btn"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
             >
-                <FaBars />
+                {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
-            <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/menu">Menu</Link></li>
-                    <li><Link to="/reservations">Reservations</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                </ul>
-            </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMobileMenuOpen && (
+                <div className="mobile-menu-overlay">
+                    <ul className="mobile-nav">
+                        <li>
+                            <NavLink
+                                to="/"
+                                end
+                                className={({ isActive }) => isActive ? 'active' : ''}
+                                onClick={toggleMobileMenu}
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/components/about"
+                                className={({ isActive }) => isActive ? 'active' : ''}
+                                onClick={toggleMobileMenu}
+                            >
+                                About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                    to="/components/specials"
+                                    className={({ isActive }) => isActive ? 'active' : ''}
+                                    onClick={toggleMobileMenu}
+                            >
+                                Menu
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/components/booking"
+                            className={({ isActive }) => isActive ? 'active' : ''}
+                            onClick={toggleMobileMenu}
+                        >
+                            Reservations
+                        </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </nav>
     )
 }
