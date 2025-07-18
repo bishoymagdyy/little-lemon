@@ -3,7 +3,6 @@ import Specials from "./components/specials"
 import Testimonials from "./components/testimonials"
 import About from "./components/about"
 
-
 function Home() {
 
     return (
