@@ -3,6 +3,7 @@ import '../style.css'; // Create this file for styling
 import footer from '../photo/footer.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -13,12 +14,12 @@ function Footer() {
             <div className="footer-nav">
                 <h4>Doormat Navigation</h4>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/menu">Menu</a></li>
-                    <li><a href="/reservations">Reservations</a></li>
-                    <li><a href="/order">Order Online</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li><Link to="/" end>Home</Link></li>
+                    <li><Link to="/components/about">About</Link></li>
+                    <li><Link to="/components/specials">Menu</Link></li>
+                    <li><Link to="/components/bookingPage">Reservations</Link></li>
+                    <li><Link to="#">Order Online</Link></li>
+                    <li><Link to="#">Login</Link></li>
                 </ul>
             </div>
             <div className="footer-contact">

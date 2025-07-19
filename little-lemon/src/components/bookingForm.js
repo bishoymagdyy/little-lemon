@@ -57,7 +57,7 @@ const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
                     </select>
                 </div>
                 <div>
-                    <button className='submit-btn'  disabled={!name} aria-label="On Click" type={"submit"} value={"Make Your Reservation"}>
+                    <button className='submit-btn'  disabled={!name || !date || !time || !occasion || guest < 1} aria-label="On Click" type={"submit"} value={"Make Your Reservation"}>
                         Submit
                     </button>
                 </div>

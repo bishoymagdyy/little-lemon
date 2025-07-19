@@ -36,6 +36,7 @@ const updateTimes = (state, action) => {
 
 
 
+
 function App() {
 
 
@@ -70,4 +71,6 @@ function App() {
     </div>
   );
 }
+
+export { initializeTimes, updateTimes };
 export default App;
