@@ -16,6 +16,11 @@ const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         submitForm({name, date, time, guest, occasion});
+        setName("")
+        setGuest(1)
+        setTime("")
+        setOccasion("")
+        setDate("")
     };
 
     const handleChange=(e)=>{
