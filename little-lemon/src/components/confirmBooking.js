@@ -1,12 +1,22 @@
 import React from "react";
+import { FaCheckCircle } from 'react-icons/fa';
+
 
 
 function ConfirmBooking() {
-    return(
+    return (
         <div className="confirm-booking">
-            <h1>your Booking has been confirmed</h1>
+            <div className="confirm-logo">
+                <FaCheckCircle size={64} />
+            </div>
+            <h1>
+                Booking Confirmed!
+            </h1>
+            <h3>
+                Your reservation has been successfully submitted
+            </h3>
         </div>
-    )
+    );
 }
 
 

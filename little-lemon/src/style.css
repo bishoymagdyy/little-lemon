@@ -568,6 +568,31 @@ body {
 }
 
 
+/* Booking page style  */
+
+
+.confirm-booking {
+    display: flex;
+    flex-direction: column;
+    margin: 11rem 0 21rem 0;
+    font-size: 1.5rem;
+}
+
+.confirm-logo{
+    margin-right: -35rem;
+    margin-bottom: -5rem;
+    color: #F4CE14;
+}
+
+.confirm-booking h1 {
+    color: #495E57;
+}
+
+.confirm-booking h3{
+    color: #495E57;
+}
+
+
 /* mobile nav */
 
 .hamburger {
@@ -593,7 +618,6 @@ body {
         display: block;
     }
 
-  /* Mobile menu styling */
 }
 
 /* Mobile Menu */
