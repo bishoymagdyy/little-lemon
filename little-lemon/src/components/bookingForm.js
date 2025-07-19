@@ -1,7 +1,7 @@
-import React, { useState } from 'react'; // Required for hooks
-
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import { submitAPI } from '../App';
+import { Link } from 'react-router-dom';
 
 
 const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
@@ -13,19 +13,30 @@ const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
     const [time , setTime] = useState('');
     const [guest , setGuest] = useState(1);
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        submitForm({name, date, time, guest, occasion});
-        setName("")
-        setGuest(1)
-        setTime("")
-        setOccasion("")
-        setDate("")
-    };
+        const success = submitAPI({name,date,time,guest,occasion});
+        if (success){
+            submitForm({ name, date, time, guest, occasion });
+            setName("")
+            setGuest(1)
+            setTime("")
+            setOccasion("")
+            setDate("")
+        };
+    }
 
-    const handleChange=(e)=>{
-        setDate(e.target.value);
-        dispatch({type: 'UPDATE_TIMES', date: e.target.value});
+
+
+    const handleDateChange = (e) => {
+        const selectedDate = e.target.value;
+        console.log("Raw date input:", selectedDate);
+
+        setDate(selectedDate);
+        setTime('')
+
+        dispatch({type: 'UPDATE_TIMES', date: selectedDate + 'T00:00' });
     };
 
 
@@ -38,7 +49,7 @@ const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
                 </div>
                 <div className='forms'>
                     <label htmlFor="date">Date:</label>
-                    <input type="date" id="date" name="date" value={date} onChange={handleChange}  required />
+                    <input type="date" id="date" name="date" value={date} onChange={handleDateChange}  required  />
                 </div>
                 <div className='forms'>
                     <label htmlFor="time">Time:</label>
@@ -62,9 +73,7 @@ const BookingForm =({availableTimes = [], dispatch = () => {}, submitForm}) => {
                     </select>
                 </div>
                 <div>
-                    <button className='submit-btn'  disabled={!name || !date || !time || !occasion || guest < 1} aria-label="On Click" type={"submit"} value={"Make Your Reservation"}>
-                        Submit
-                    </button>
+                    <Link to="/components/confirmBooking"><button className='submit-btn'  disabled={!name || !date || !time || !occasion || guest < 1} aria-label="On Click" type={"submit"} value={"Make Your Reservation"}>Submit</button></Link>
                 </div>
             </fieldset>
         </form>
