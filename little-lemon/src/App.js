@@ -4,7 +4,6 @@ import Nav from './components/nav';
 import About from './components/about';
 import Footer from './components/footer';
 import Home from './home';
-import './App.css';
 import './style.css'
 import '@fontsource/markazi-text/400.css';
 import '@fontsource/markazi-text/700.css';

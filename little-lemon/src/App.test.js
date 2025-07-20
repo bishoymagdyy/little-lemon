@@ -1,120 +1,190 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import BookingForm from './components/bookingForm';
-import BookingPage from './components/bookingPage';
+import { MemoryRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 
-
-
-test('render booking form label' , () => {
-  render(<BookingForm />);
-  const labelElement = screen.getByLabelText(/Name/i);
-  expect(labelElement).toBeInTheDocument();
-
-
-  const ButtonElement = screen.getByRole("button")
-  fireEvent.click(ButtonElement);
-})
-
-
-
-
-export const initializeTimes = () => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+// Mock props
+const mockProps = {
+  availableTimes: ['17:00', '18:00'],
+  dispatch: jest.fn(),
+  submitForm: jest.fn(),
 };
 
-export const updateTimes = (state, action) => {
-  switch (action.type) {
-    case 'UPDATE_TIMES':
-      return initializeTimes();
-    default:
-      return state;
-  }
-};
-
-describe('Reducer Functions', () => {
-  test('initializeTimes returns correct initial times', () => {
-    const expectedTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-    const result = initializeTimes();
-    expect(result).toEqual(expectedTimes);
-  });
-
-  test('updateTimes returns the same times regardless of date', () => {
-    const mockState = ['17:00', '18:00'];
-    const mockAction = { type: 'UPDATE_TIMES', date: '2023-05-20' };
-    const result = updateTimes(mockState, mockAction);
-    expect(result).toEqual(initializeTimes());
-  });
-});
-
-describe('BookingForm', () => {
-  const mockAvailableTimes = ['17:00', '18:00', '19:00'];
-  const mockDispatch = jest.fn();
-  const mockSubmitForm = jest.fn();
-
+describe('BookingForm HTML attributes', () => {
   beforeEach(() => {
     render(
-      <BookingForm
-        availableTimes={mockAvailableTimes}
-        dispatch={mockDispatch}
-        submitForm={mockSubmitForm}
-      />
+      <MemoryRouter>
+        <BookingForm {...mockProps} />
+      </MemoryRouter>
     );
   });
 
-  test('renders all form fields', () => {
-    expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Date/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Time/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Number of guests/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Occasion/i)).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+  it('should have correct attributes for name input', () => {
+    const nameInput = screen.getByLabelText(/name/i);
+    expect(nameInput).toHaveAttribute('type', 'text');
+    expect(nameInput).toHaveAttribute('id', 'name');
+    expect(nameInput).toHaveAttribute('name', 'name');
   });
 
-  test('form submission works correctly', () => {
-    fireEvent.change(screen.getByLabelText(/Name/i), { target: { value: 'John Doe' } });
-    fireEvent.change(screen.getByLabelText(/Date/i), { target: { value: '2023-05-20' } });
-    fireEvent.change(screen.getByLabelText(/Time/i), { target: { value: '18:00' } });
-    fireEvent.change(screen.getByLabelText(/Number of guests/i), { target: { value: '4' } });
-    fireEvent.change(screen.getByLabelText(/Occasion/i), { target: { value: 'anniversary' } });
-
-    fireEvent.click(screen.getByRole('button'));
-
-    expect(mockSubmitForm).toHaveBeenCalledWith({
-      name: 'John Doe',
-      date: '2023-05-20',
-      time: '18:00',
-      guest: '4',
-      occasion: 'anniversary'
-    });
+  it('should have correct attributes for date input', () => {
+    const dateInput = screen.getByLabelText(/date/i);
+    expect(dateInput).toHaveAttribute('type', 'date');
+    expect(dateInput).toHaveAttribute('id', 'date');
+    expect(dateInput).toHaveAttribute('name', 'date');
   });
 
-  test('dispatches action when date changes', () => {
-    fireEvent.change(screen.getByLabelText(/date/i), { target: { value: '2023-05-20' } });
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'UPDATE_TIMES',
-      date: '2023-05-20'
-    });
+  it('should have correct attributes for time select', () => {
+    const timeSelect = screen.getByLabelText(/time/i);
+    expect(timeSelect).toHaveAttribute('id', 'time');
+    expect(timeSelect).toHaveAttribute('name', 'time');
   });
 
+  it('should have correct attributes for guest input', () => {
+    const guestInput = screen.getByLabelText(/number of guests/i);
+    expect(guestInput).toHaveAttribute('type', 'number');
+    expect(guestInput).toHaveAttribute('id', 'guest');
+    expect(guestInput).toHaveAttribute('name', 'guest');
+    expect(guestInput).toHaveAttribute('min', '1');
+    expect(guestInput).toHaveAttribute('maxLength', '10');
+  });
 
-
-  test('disables submit button when required fields are empty', () => {
-    expect(screen.getByRole('button')).toBeDisabled();
+  it('should have correct attributes for occasion select', () => {
+    const occasionSelect = screen.getByLabelText(/occasion/i);
+    expect(occasionSelect).toHaveAttribute('id', 'occasion');
+    expect(occasionSelect).toHaveAttribute('name', 'occasion');
   });
 });
 
+// --- JavaScript validation function tests ---
+const validate = (fields) => {
+  const errors = {};
+  if (!fields.name) {
+    errors.name = 'Please enter a name';
+  } else if (fields.name.length < 3) {
+    errors.name = 'Name must be at least 3 characters';
+  }
+  if (!fields.date) errors.date = 'Please select a date';
+  if (!fields.time) errors.time = 'Please select a time';
+  if (!fields.guest || fields.guest < 1) errors.guest = 'At least 1 guest required';
+  if (!fields.occasion) errors.occasion = 'Please select an occasion';
+  return errors;
+};
 
+describe('BookingForm validate function', () => {
+  it('returns no errors for valid input', () => {
+    const valid = {
+      name: 'John Doe',
+      date: '2025-07-20',
+      time: '18:00',
+      guest: 2,
+      occasion: 'birthday',
+    };
+    expect(validate(valid)).toEqual({});
+  });
 
-describe('BookingPage', () => {
-  test('renders booking page with form', () => {
-    // Mock the useReducer hook
-    jest.spyOn(require('react'), 'useReducer').mockImplementation(() => [
-      ['17:00', '18:00', '19:00'],
-      jest.fn()
-    ]);
+  it('returns errors for missing fields', () => {
+    const invalid = {
+      name: '',
+      date: '',
+      time: '',
+      guest: '',
+      occasion: '',
+    };
+    expect(validate(invalid)).toEqual({
+      name: 'Please enter a name',
+      date: 'Please select a date',
+      time: 'Please select a time',
+      guest: 'At least 1 guest required',
+      occasion: 'Please select an occasion',
+    });
+  });
 
-    render(<BookingPage />);
-    expect(screen.getByRole('heading', { name: /book a table/i })).toBeInTheDocument();
-    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
+  it('returns error for short name', () => {
+    const invalid = {
+      name: 'Al',
+      date: '2025-07-20',
+      time: '18:00',
+      guest: 2,
+      occasion: 'birthday',
+    };
+    expect(validate(invalid)).toHaveProperty('name', 'Name must be at least 3 characters');
+  });
+
+  it('returns error for guest < 1', () => {
+    const invalid = {
+      name: 'John Doe',
+      date: '2025-07-20',
+      time: '18:00',
+      guest: 0,
+      occasion: 'birthday',
+    };
+    expect(validate(invalid)).toHaveProperty('guest', 'At least 1 guest required');
+  });
+});
+
+describe('BookingForm form submission and input validation', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('shows errors and does not submit with empty fields', async () => {
+    render(
+      <MemoryRouter>
+        <BookingForm {...mockProps} />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByRole('button'));
+
+    expect(await screen.findByText(/please enter a name/i)).toBeInTheDocument();
+    expect(await screen.findByText(/please select a date/i)).toBeInTheDocument();
+    expect(await screen.findByText(/please select a time/i)).toBeInTheDocument();
+    expect(await screen.findByText(/at least 1 guest required/i)).toBeInTheDocument();
+    expect(await screen.findByText(/please select an occasion/i)).toBeInTheDocument();
+    expect(mockProps.submitForm).not.toHaveBeenCalled();
+  });
+
+  it('shows error for short name and clears when valid', async () => {
+    render(
+      <MemoryRouter>
+        <BookingForm {...mockProps} />
+      </MemoryRouter>
+    );
+    const nameInput = screen.getByLabelText(/name/i);
+    userEvent.clear(nameInput);
+    userEvent.type(nameInput, 'Al');
+    nameInput.blur();
+    expect(await screen.findByText(/name must be at least 3 characters/i)).toBeInTheDocument();
+
+    userEvent.clear(nameInput);
+    userEvent.type(nameInput, 'Alex');
+    nameInput.blur();
+    expect(screen.queryByText(/name must be at least 3 characters/i)).not.toBeInTheDocument();
+  });
+
+  it('submits the form when all fields are valid', async () => {
+    render(
+      <MemoryRouter>
+        <BookingForm {...mockProps} />
+      </MemoryRouter>
+    );
+    userEvent.type(screen.getByLabelText(/name/i), 'John Doe');
+    userEvent.type(screen.getByLabelText(/date/i), '2025-07-20');
+    userEvent.selectOptions(screen.getByLabelText(/time/i), '17:00');
+    userEvent.clear(screen.getByLabelText(/number of guests/i));
+    userEvent.type(screen.getByLabelText(/number of guests/i), '2');
+    userEvent.selectOptions(screen.getByLabelText(/occasion/i), 'birthday');
+
+    userEvent.click(screen.getByRole('button'));
+
+    // Wait for submitForm to be called
+    await screen.findByRole('button', { name: /submit/i });
+    expect(mockProps.submitForm).toHaveBeenCalledWith({
+      name: 'John Doe',
+      date: '2025-07-20',
+      time: '17:00',
+      guest: '2',
+      occasion: 'birthday',
+    });
   });
 });

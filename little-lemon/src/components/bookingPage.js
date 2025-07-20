@@ -3,7 +3,6 @@ import BookingForm from './bookingForm';
 
 const BookingPage = ({ availableTimes = [], dispatch = () => {} }) => {
     const submitForm = (formData) => {
-        // Handle form submission
         console.log('Form submitted:', formData);
     };
 

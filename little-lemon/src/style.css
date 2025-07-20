@@ -31,7 +31,7 @@ body {
 .navbar {
     display: inline-flex;
     align-items: center;
-    padding: 0.2rem 19rem;
+    padding: 0.2rem 20rem;
     background: white;
     position: sticky;
     top: 0;
@@ -47,11 +47,11 @@ body {
 
 /* Logo image */
 .logo img {
-    width: 180px;
+    width: 170px;
     height: auto;
     max-width: 100%;
     flex-direction: row;
-    margin-right: 220px;
+    margin-right: 200px;
 }
 
 
@@ -312,13 +312,13 @@ body {
 
 /* Testimonials */
 .testimonials {
-    padding: 4rem 2rem;
+    padding: 8rem 2rem;
     background: #F4F4F4;
     margin: 4rem 0 4rem 0;
 }
 
 .testimonials h2{
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 500;
     font-family: "'markazi taxi', sans-serif";
 
@@ -332,7 +332,7 @@ body {
 }
 
 .testimonial-card {
-    background: white;
+    background-color: white;
     padding: 1.5rem;
     border-radius: 8px;
 }
@@ -355,8 +355,8 @@ body {
 }
 
 .reviewer-photo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #F4CE14;
@@ -364,7 +364,7 @@ body {
 
 .rating {
     color: #F4CE14;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .review-text {
